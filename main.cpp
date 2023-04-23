@@ -19,7 +19,6 @@
 #include "Camera.hpp"
 #include "Texture.hpp"
 #include "Image.hpp"
-#include "Debug.hpp"
 
 static void glfw_error_callback(int error, const char* description)
 {
@@ -154,7 +153,7 @@ int main(int, char**)
             float valueGain = camera->camConfig.currentGain;
             if (ImGui::SliderFloat("##Gain", &valueGain, camera->camConfig.minGain,
                 camera->camConfig.maxGain, "%.3f", ImGuiSliderFlags_AlwaysClamp)) {
-                D("gain changed to %f\n", value);
+                printf("gain changed to %f\n", &valueGain);
                 camera->setGain(valueGain);
             }
         }else{
@@ -173,7 +172,7 @@ int main(int, char**)
         float valueFrameRate = camera->camConfig.currentFrameRate;
         if (ImGui::SliderFloat("##Frame rate", &valueFrameRate, camera->camConfig.minFrameRate,
             camera->camConfig.maxFrameRate, "%.3f", ImGuiSliderFlags_AlwaysClamp)) {
-            D("frame rate changed to %f\n", value);
+            printf("frame rate changed to %f\n", &valueFrameRate);
             camera->setFrameRate(valueFrameRate);
         }
         }else{
